@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>말조심</title>
+	<style type="text/css">
+	
+	.map
+	{
+		width:auto;
+	}
+	</style>
+	<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=ff4a70a413cf2afeb8d10d12a030facbe9fc2810" charset="utf-8"></script> 
+	<script src="jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" >
+	var map;
+	
+	var s1 = null;
+	var s2 = null;
+	var s3 = null;
+	var s4 = null;
+	var s5 = null;
+	var s6 = null;
+	var s7 = null;
+	var s8 = null;
+	var s9 = null;
+	var s10 = null;
+	
+	$(document).ready(function() {
+		s1 = new Audio("s1.mp3");//여보세요
+		s2 = new Audio("s2.mp3");//경 도 김 요
+		s3 = new Audio("s3.mp3");//이름이 누구
+		s4 = new Audio("s4.mp3");//어~ 내가 도 이름이 누구요
+		s5 = new Audio("s5.mp3");//아니 내가 도라는데 안들려요?
+		s6 = new Audio("s6.mp3");//아니 도 이름 답을 안해?
+		s7 = new Audio("s7.mp3");//관등성명
+		s8 = new Audio("s8.mp3");//알겠어요
+		s9 = new Audio("s9.mp3");//뚜뚜뚜
+		s10 = new Audio("s10.mp3");
+		
+		map = new daum.maps.Map(document.getElementById('map'), {
+			center: new daum.maps.LatLng(37.27536599537331, 127.00857984557407)
+		});
+		var marker = new daum.maps.Marker({
+			position: new daum.maps.LatLng(37.27536599537331, 127.00857984557407)
+		});
+		marker.setMap(map);
+	});
+
+	function voice()
+	{
+		v = $("#speech-input-field").val();
+		
+		if(v.indexOf("여보") != -1 || v.indexOf("보세") != -1)
+		{
+			s1.play();
+		}
+		else if(v.indexOf("누구") != -1 || v.indexOf("구세") != -1)
+		{
+			s2.play();
+		}
+		else if(v.indexOf("왜") != -1 || v.indexOf("뭐") != -1)
+		{
+			s4.play();
+		}
+		else if(v.indexOf("몰라") != -1 || v.indexOf("응") != -1 || v.indexOf("모른") != -1 || v.indexOf("다구") != -1
+		|| v.indexOf("죽을래") != -1 || v.indexOf("누구냐") != -1 || v.indexOf("닥") != -1)
+		{
+			s5.play();
+		}
+		else if(v.indexOf("싫") != -1 || v.indexOf("실") != -1 || v.indexOf("안해") != -1 || v.indexOf("넌") != -1 || v.indexOf("타") != -1)
+		{
+			s6.play();
+		}
+		else if(v.indexOf("어쩌") != -1 || v.indexOf("웃") != -1 || v.indexOf("들") != -1 || v.indexOf("린다") != -1)
+		{
+			s7.play();
+		}
+		else if(v.indexOf("입니다") != -1 || v.indexOf("죄송") != -1 || v.indexOf("사랑") != -1)
+		{
+			s8.play();
+		}
+		else if(v.indexOf("꺼") != -1 || v.indexOf("사라") != -1 || v.indexOf("끈") != -1 || v.indexOf("끊") != -1)
+		{
+			s9.play();
+		}
+		else if(v.indexOf("씨") != -1 || v.indexOf("병") != -1 || v.indexOf("끼") != -1 || v.indexOf("시") != -1)
+		{
+			s10.play();
+		}
+		else
+		{
+			s1.play();
+		}
+                //$("#speech-input-field").val("");
+	}
+	</script>
+</head>
+<body>
+	<h1>말실수 조심하기 시뮬레이션</h1>
+	<div class="intro">
+		
+	</div>
+	<div class="map">
+		<div id="map" style="width:auto;height:300px;"></div>
+	</div>
+<p>크롬으로 실행하면 마이크 버튼이 보입니다. 클릭하시고 마이크로 대화를 나누면 됩니다</p>
+<p>크롬이 없거나 마이크가 없으면 입력창에 글을 입력하시고 엔터를 누르세요</p>
+	<input id="speech-input-field" type="text" x-webkit-speech="" onwebkitspeechchange="javascript:voice()" onkeypress="javascript:voice();" />
+</body>
+</html>
