@@ -1,4 +1,4 @@
-말실수 조심하기 시뮬레이션
+Simulation to be careful of mistakes
 
 https://c9.io/jungju/dosisa/workspace/index.html
 
